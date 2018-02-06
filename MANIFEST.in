@@ -7,9 +7,6 @@ include .bumpversion.cfg
 include .coveragerc
 include .cookiecutterrc
 include .editorconfig
-include Pipfile.lock
-include Pipfile
-include tasks.py
 
 include AUTHORS.rst
 include CHANGELOG.rst
@@ -19,4 +16,4 @@ include README.rst
 
 include tox.ini .travis.yml appveyor.yml
 
-global-exclude *.py[cod] __pycache__ *.so *.dylib
+global-exclude *.py[cod] __pycache__ *.so *.dylib Pipfile Pipfile.lock tasks.py
