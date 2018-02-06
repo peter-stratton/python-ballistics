@@ -14,6 +14,7 @@ name = "pypi"
 tox = "*"
 invoke = "*"
 twine = "*"
+sphinx = "*"
 
 
 [requires]
