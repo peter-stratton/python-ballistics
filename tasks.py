@@ -34,7 +34,7 @@ def deploy(ctx, testserver=False):
     if testserver:
         ctx.run('twine upload --repository-url https://test.pypi.org/legacy/ --skip-existing dist/*.whl dist/*.gz')
     else:
-        ctx.run('twine upload --skip-existing --skip-existing dist/*.whl dist/*.gz dist/*.zip')
+        ctx.run('twine upload --skip-existing dist/*.whl dist/*.gz')
 
 
 @task
