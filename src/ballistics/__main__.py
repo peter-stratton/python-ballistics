@@ -1,5 +1,5 @@
 """
-Entrypoint module, in case you use `python -mballistics`.
+Entrypoint module, in case you use `python -m ballistics`.
 
 
 Why does this file exist, and why __main__? For more info, read:
@@ -12,5 +12,10 @@ import sys
 
 from ballistics.cli import main
 
-if __name__ == "__main__":
-    sys.exit(main())
+
+def module_main():
+    if __name__ == "__main__":
+        sys.exit(main())
+
+
+module_main()
