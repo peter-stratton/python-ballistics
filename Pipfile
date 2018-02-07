@@ -17,6 +17,7 @@ twine = "*"
 sphinx = "*"
 pytest = "*"
 pytest-cov = "*"
+bumpversion = "*"
 
 
 [requires]

@@ -3,7 +3,7 @@ from invoke import task
 
 @task
 def clean(ctx, docs=False, bytecode=False, extra=''):
-    patterns = ['build']
+    patterns = ['build', 'src/*.egg-info']
     if docs:
         patterns.append('docs/_build')
     if bytecode:
@@ -16,7 +16,7 @@ def clean(ctx, docs=False, bytecode=False, extra=''):
 
 @task
 def build(ctx, docs=False):
-    ctx.run('python setup.py sdist bdist_wheel')
+    ctx.run('python setup.py clean --all sdist bdist_wheel')
     if docs:
         ctx.run('sphinx-build docs docs/_build')
 
@@ -30,8 +30,11 @@ def runtests(ctx, html=False):
 
 
 @task
-def testpypi(ctx):
-    ctx.run('twine upload --repository-url https://test.pypi.org/legacy/ dist/* ')
+def deploy(ctx, testserver=False):
+    if testserver:
+        ctx.run('twine upload --repository-url https://test.pypi.org/legacy/ --skip-existing dist/*.whl dist/*.gz')
+    else:
+        ctx.run('twine upload --skip-existing --skip-existing dist/*.whl dist/*.gz dist/*.zip')
 
 
 @task

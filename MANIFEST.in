@@ -13,7 +13,12 @@ include CHANGELOG.rst
 include CONTRIBUTING.rst
 include LICENSE
 include README.rst
+include Pipfile
+include Pipfile.lock
 
 include tox.ini .travis.yml appveyor.yml
 
-global-exclude *.py[cod] __pycache__ *.so *.dylib Pipfile Pipfile.lock tasks.py .coverage
+prune docs/_build
+prune tasks.py
+
+global-exclude *.py[cod] __pycache__ *.so *.dylib .coverage
