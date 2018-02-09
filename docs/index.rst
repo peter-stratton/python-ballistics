@@ -8,10 +8,13 @@ Contents
    readme
    installation
    usage
+   api
    reference/index
    contributing
    authors
    changelog
+
+.. automodule::
 
 Indices and tables
 ==================
