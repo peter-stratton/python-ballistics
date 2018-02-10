@@ -59,7 +59,9 @@ Overview
 
 .. end-badges
 
-A python package for calculating ballistics solutions.
+The Python ballistics package is a collection of functions to help analyze and understand the motion of an un-powered
+(i.e. not a rocket, missile, etc) projectile from the muzzle to the target. The ``ballistics.extras`` module contains
+related functions that aren't strictly related to the study of ballistics but have proven interesting or useful.
 
 * Free software: MIT license
 
