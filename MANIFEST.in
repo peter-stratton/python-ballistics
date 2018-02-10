@@ -21,4 +21,4 @@ include tox.ini .travis.yml appveyor.yml
 prune docs/_build
 prune tasks.py
 
-global-exclude *.py[cod] __pycache__ *.so *.dylib .coverage
+global-exclude *.py[cod] __pycache__ *.so *.dylib .coverage .DS_Store

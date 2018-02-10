@@ -2,7 +2,7 @@
 Changelog
 =========
 
-0.1.2 (2018-02-09)
+0.1.2
 ------------------
 
 * Free Recoil Energy solver added to extras module.

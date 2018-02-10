@@ -44,7 +44,7 @@ html_theme_options = {
     'githuburl': 'https://github.com/peter-stratton/python-ballistics/'
 }
 
-html_use_smartypants = True
+# html_use_smartypants = True
 html_last_updated_fmt = '%b %d, %Y'
 html_split_index = False
 html_sidebars = {
