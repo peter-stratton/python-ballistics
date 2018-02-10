@@ -15,9 +15,10 @@ tox = "*"
 invoke = "*"
 twine = "*"
 sphinx = "*"
-pytest = "*"
 pytest-cov = "*"
 bumpversion = "*"
+pytz = "*"
+pytest = "*"
 
 
 [requires]

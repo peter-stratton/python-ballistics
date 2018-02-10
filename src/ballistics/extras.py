@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-This module contains functions that are related to, but not part of the core ballistics calculations contained
-in the `internal`, `transitional`, `external`, or `terminal` modules.
+This module contains useful or interesting functions that are related to ballistics but don't fit well anywhere else.
 """
 
 # CONSTANTS

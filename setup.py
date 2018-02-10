@@ -26,7 +26,7 @@ setup(
     name='ballistics',
     version='0.2.0',
     license='MIT license',
-    description='A python package for calculating ballistics solutions.',
+    description='A python package for performing exterior, and terminal ballistics calculations.',
     long_description='%s\n%s' % (
         re.compile('^.. start-badges.*^.. end-badges', re.M | re.S).sub('', read('README.rst')),
         re.sub(':[a-z]+:`~?(.*?)`', r'``\1``', read('CHANGELOG.rst'))
