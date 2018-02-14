@@ -166,38 +166,58 @@ def test_approximate_recoil_velocity_no_decimal_matches_chuck_hawks_270_win():
 
 
 # http://www.shooterscalculator.com/
-def test_approximate_recoil_impulse_generic_01():
+def test_approximate_recoil_impulse_generic_two_decimals_01():
     expect = 2.33  # lbs sec
+    result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=100,
+                                           muzzle_velocity_in_fps=3000,
+                                           charge_weight_in_grains=45,
+                                           decimal_places=2)
+    assert (expect == result)
+
+
+def test_approximate_recoil_impulse_generic_no_decimals_01():
+    expect = 2  # lbs sec
     result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=100,
                                            muzzle_velocity_in_fps=3000,
                                            charge_weight_in_grains=45)
     assert (expect == result)
 
 
-def test_approximate_recoil_with_firearm_code_01():
+def test_approximate_recoil_with_firearm_code_two_decimals_01():
     expect = 2.38  # lbs sec
     result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=100,
                                            muzzle_velocity_in_fps=3000,
                                            charge_weight_in_grains=45,
-                                           firearm_code='HPR')
+                                           firearm_code='HPR',
+                                           decimal_places=2)
     assert (expect == result)
 
 
 # http://www.shooterscalculator.com/
-def test_approximate_recoil_impulse_generic_02():
+def test_approximate_recoil_impulse_generic_two_decimals_02():
     expect = 3.66  # lbs sec
+    result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=200,
+                                           muzzle_velocity_in_fps=3000,
+                                           charge_weight_in_grains=45,
+                                           decimal_places=2)
+    assert (expect == result)
+
+
+def test_approximate_recoil_impulse_generic_no_decimals_02():
+    expect = 4  # lbs sec
     result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=200,
                                            muzzle_velocity_in_fps=3000,
                                            charge_weight_in_grains=45)
     assert (expect == result)
 
 
-def test_approximate_recoil_impulse_with_firearm_code_02():
+def test_approximate_recoil_impulse_with_firearm_code_two_decimals_02():
     expect = 3.71  # lbs sec
     result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=200,
                                            muzzle_velocity_in_fps=3000,
                                            charge_weight_in_grains=45,
-                                           firearm_code='HPR')
+                                           firearm_code='HPR',
+                                           decimal_places=2)
     assert (expect == result)
 
 
@@ -206,7 +226,8 @@ def test_approximate_recoil_impulse_generic_03():
     expect = 2.18  # lbs sec
     result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=150,
                                            muzzle_velocity_in_fps=2100,
-                                           charge_weight_in_grains=35)
+                                           charge_weight_in_grains=35,
+                                           decimal_places=2)
     assert (expect == result)
 
 
@@ -215,7 +236,8 @@ def test_approximate_recoil_impulse_with_firearm_code_03():
     result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=150,
                                            muzzle_velocity_in_fps=2100,
                                            charge_weight_in_grains=35,
-                                           firearm_code='HPR')
+                                           firearm_code='HPR',
+                                           decimal_places=2)
     assert (expect == result)
 
 
