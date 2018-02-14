@@ -94,11 +94,11 @@ def test_free_recoil_energy_one_decimal_matches_chuck_hawks_6mm_rem():
 
 def test_approximate_recoil_velocity_one_decimal_matches_chuck_haweks_6mm_rem():
     expect = 9.0
-    result = ex.approximate_recoil_velocity(firearm_code='HPR',
-                                            firearm_weight_in_lbs=8,
+    result = ex.approximate_recoil_velocity(firearm_weight_in_lbs=8,
                                             ejecta_weight_in_grains=100,
-                                            charge_weight_in_grains=35.5,
                                             muzzle_velocity_in_fps=3100,
+                                            charge_weight_in_grains=35.5,
+                                            firearm_code='HPR',
                                             decimal_places=1)
     assert (expect == result)
 
@@ -115,11 +115,11 @@ def test_free_recoil_energy_no_decimal_matches_chuck_hawks_6mm_rem():
 
 def test_approximate_recoil_velocity_no_decimal_matches_chuck_haweks_6mm_rem():
     expect = 9
-    result = ex.approximate_recoil_velocity(firearm_code='HPR',
-                                            firearm_weight_in_lbs=8,
+    result = ex.approximate_recoil_velocity(firearm_weight_in_lbs=8,
                                             ejecta_weight_in_grains=100,
+                                            muzzle_velocity_in_fps=3100,
                                             charge_weight_in_grains=35.5,
-                                            muzzle_velocity_in_fps=3100)
+                                            firearm_code='HPR')
     assert (expect == result)
 
 
@@ -136,11 +136,11 @@ def test_free_recoil_recoil_energy_one_decimal_matches_chuck_hawks_270_win():
 
 def test_approximate_recoil_velocity_one_decimal_matches_chuck_hawks_270_win():
     expect = 11.7
-    result = ex.approximate_recoil_velocity(firearm_code='HPR',
-                                            firearm_weight_in_lbs=8,
+    result = ex.approximate_recoil_velocity(firearm_weight_in_lbs=8,
                                             ejecta_weight_in_grains=140,
-                                            charge_weight_in_grains=45,
                                             muzzle_velocity_in_fps=3000,
+                                            charge_weight_in_grains=45,
+                                            firearm_code='HPR',
                                             decimal_places=1)
     assert (expect == result)
 
@@ -157,12 +157,13 @@ def test_free_recoil_recoil_energy_no_decimal_matches_chuck_hawks_270_win():
 
 def test_approximate_recoil_velocity_no_decimal_matches_chuck_hawks_270_win():
     expect = 12
-    result = ex.approximate_recoil_velocity(firearm_code='HPR',
-                                            firearm_weight_in_lbs=8,
+    result = ex.approximate_recoil_velocity(firearm_weight_in_lbs=8,
                                             ejecta_weight_in_grains=140,
+                                            muzzle_velocity_in_fps=3000,
                                             charge_weight_in_grains=45,
-                                            muzzle_velocity_in_fps=3000)
+                                            firearm_code='HPR')
     assert (expect == result)
+
 
 # http://www.shooterscalculator.com/
 def test_approximate_recoil_impulse_01():
@@ -188,4 +189,48 @@ def test_approximate_recoil_impulse_03():
     result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=150,
                                            muzzle_velocity_in_fps=2100,
                                            charge_weight_in_grains=35)
+    assert (expect == result)
+
+
+# http://www.shooterscalculator.com/
+def test_free_recoil_energy_no_firearm_code_01():
+    expect = 12.69
+    result = ex.approximate_free_recoil_energy(firearm_weight_in_lbs=6,
+                                               ejecta_weight_in_grains=150,
+                                               charge_weight_in_grains=35,
+                                               muzzle_velocity_in_fps=2100,
+                                               decimal_places=2)
+    assert (expect == result)
+
+
+# http://www.shooterscalculator.com/
+def test_free_recoil_energy_no_firearm_code_02():
+    expect = 16.49
+    result = ex.approximate_free_recoil_energy(firearm_weight_in_lbs=8,
+                                               ejecta_weight_in_grains=140,
+                                               muzzle_velocity_in_fps=3000,
+                                               charge_weight_in_grains=45,
+                                               decimal_places=2)
+    assert (expect == result)
+
+
+# http://www.shooterscalculator.com/
+def test_approx_recoil_velocity_no_firearm_code_01():
+    expect = 11.67
+    result = ex.approximate_recoil_velocity(firearm_weight_in_lbs=6,
+                                            ejecta_weight_in_grains=150,
+                                            muzzle_velocity_in_fps=2100,
+                                            charge_weight_in_grains=35,
+                                            decimal_places=2)
+    assert (expect == result)
+
+
+# http://www.shooterscalculator.com/
+def test_approx_recoil_velocity_no_firearm_code_02():
+    expect = 11.52
+    result = ex.approximate_recoil_velocity(firearm_weight_in_lbs=8,
+                                            ejecta_weight_in_grains=140,
+                                            muzzle_velocity_in_fps=3000,
+                                            charge_weight_in_grains=45,
+                                            decimal_places=2)
     assert (expect == result)
