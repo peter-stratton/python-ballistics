@@ -11,6 +11,8 @@ PROPELLANT_GAS_VELOCITY_CONSTANTS = {
     'PistolAndRevolver': 1.50
 }
 
+GENERIC_PROPELLANT_GAS_VELOCITY = 5000.0
+
 
 # HELPER FUNCTIONS
 def propellant_gas_velocity_multiplier(firearm_code):
@@ -47,7 +49,7 @@ def propellant_gas_velocity_multiplier(firearm_code):
 
 
 def propellant_gas_energy(charge_weight_in_grains, firearm_code, muzzle_velocity_in_fps):
-    """calculates the energy for a given load and firearm type
+    """Calculates the propellant gas energy for a given load and firearm type
 
     Parameters
     ----------
@@ -140,9 +142,28 @@ def approximate_recoil_velocity(firearm_code, firearm_weight_in_lbs, ejecta_weig
     weight and projectile velocity.
     """
     ejecta_energy = float(ejecta_weight_in_grains) * muzzle_velocity_in_fps
-    firearm_weight_in_grains = firearm_weight_in_lbs * 7000
+    firearm_weight_in_grains = firearm_weight_in_lbs * 7000.0
     propellant_energy = propellant_gas_energy(charge_weight_in_grains, firearm_code, muzzle_velocity_in_fps)
     velocity = (ejecta_energy + propellant_energy) / firearm_weight_in_grains
     if decimal_places:
         return round(velocity, decimal_places)
     return int(round(velocity))
+
+
+def approximate_recoil_impulse(ejecta_weight_in_grains, muzzle_velocity_in_fps, charge_weight_in_grains, firearm_code=None):
+    """Provides the approximate recoil impulse for a give
+
+    Args:
+        ejecta_weight_in_grains:
+        muzzle_velocity_in_fps:
+        charge_weight_in_grains:
+
+    Returns:
+
+    """
+    ejecta_weight_in_kgs = ejecta_weight_in_grains * 0.0000648  # 1gr == 0.0000648kg
+    charge_weight_in_kgs = charge_weight_in_grains * 0.0000648  # 1gr == 0.0000648kg
+    muzzle_velocity_in_meters_per_second = muzzle_velocity_in_fps * 0.3048037 # 1ft == 0.30480370641307 meter
+    ejecta_energy = ejecta_weight_in_kgs * muzzle_velocity_in_meters_per_second
+    charge_energy = charge_weight_in_kgs * (GENERIC_PROPELLANT_GAS_VELOCITY * 0.3048037)  # propellant gas energy OR 5000 constant
+    return round((ejecta_energy + charge_energy) * 0.224809, 2)  # 1 newton == 0.224809 pound force

@@ -163,3 +163,29 @@ def test_approximate_recoil_velocity_no_decimal_matches_chuck_hawks_270_win():
                                             charge_weight_in_grains=45,
                                             muzzle_velocity_in_fps=3000)
     assert (expect == result)
+
+# http://www.shooterscalculator.com/
+def test_approximate_recoil_impulse_01():
+    expect = 2.33  # lbs sec
+    result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=100,
+                                           muzzle_velocity_in_fps=3000,
+                                           charge_weight_in_grains=45)
+    assert (expect == result)
+
+
+# http://www.shooterscalculator.com/
+def test_approximate_recoil_impulse_02():
+    expect = 3.66  # lbs sec
+    result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=200,
+                                           muzzle_velocity_in_fps=3000,
+                                           charge_weight_in_grains=45)
+    assert (expect == result)
+
+
+# http://www.shooterscalculator.com/
+def test_approximate_recoil_impulse_03():
+    expect = 2.18  # lbs sec
+    result = ex.approximate_recoil_impulse(ejecta_weight_in_grains=150,
+                                           muzzle_velocity_in_fps=2100,
+                                           charge_weight_in_grains=35)
+    assert (expect == result)
