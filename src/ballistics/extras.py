@@ -167,7 +167,7 @@ def approximate_recoil_impulse(ejecta_weight_in_grains, muzzle_velocity_in_fps, 
         ejecta_weight_in_grains:
         muzzle_velocity_in_fps:
         charge_weight_in_grains:
-
+        firearm_code:
     Returns:
 
     """
@@ -175,10 +175,12 @@ def approximate_recoil_impulse(ejecta_weight_in_grains, muzzle_velocity_in_fps, 
     charge_weight_in_kgs = charge_weight_in_grains * 0.0000648  # 1gr == 0.0000648kg
     muzzle_velocity_in_meters_per_second = muzzle_velocity_in_fps * 0.3048037  # 1ft == 0.30480370641307 meter
     ejecta_energy = ejecta_weight_in_kgs * muzzle_velocity_in_meters_per_second
-    charge_energy = charge_weight_in_kgs * (
-        GENERIC_PROPELLANT_GAS_VELOCITY * 0.3048037)  # propellant gas energy OR 5000 constant
+    if firearm_code:
+        gas_velocity = propellant_gas_velocity_multiplier(firearm_code) * muzzle_velocity_in_fps
+        charge_energy = charge_weight_in_kgs * gas_velocity * 0.3048037
+    else:
+        charge_energy = charge_weight_in_kgs * GENERIC_PROPELLANT_GAS_VELOCITY * 0.3048037
     return round((ejecta_energy + charge_energy) * 0.224809, 2)  # 1 newton == 0.224809 pound force
-
 
 # if __name__ == '__main__':
 #     approximate_free_recoil_energy(firearm_weight_in_lbs=6,
