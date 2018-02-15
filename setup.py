@@ -24,7 +24,7 @@ def read(*names, **kwargs):
 
 setup(
     name='ballistics',
-    version='0.3.0',
+    version='0.4.0',
     license='MIT license',
     description='A python package for performing exterior, and terminal ballistics calculations.',
     long_description='%s\n%s' % (
