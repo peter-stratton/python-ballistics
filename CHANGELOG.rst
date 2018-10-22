@@ -2,8 +2,12 @@
 Changelog
 =========
 
-0.4.0
+0.5.0
 -----
+
+
+0.4.0 (2018-02-14)
+------------------
 * Recoil Impulse solver added to extras module.
 * Firearm Code made optional for all Recoil solvers.
 
